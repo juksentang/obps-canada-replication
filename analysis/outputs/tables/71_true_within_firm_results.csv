@@ -1,9 +1,0 @@
-sample,spec,coef,se,p,N,firms,cells,firm_years
-All firms with Alberta and non-Alberta facilities,Firm FE + year FE,0.516840916032958,0.21512005776731652,0.016280335146935783,2406,137,358.0,1197.0
-All firms with Alberta and non-Alberta facilities,Firm-province FE + year FE,-0.10629196216087772,0.26081052224589196,0.6836079252659297,2406,137,358.0,1197.0
-All firms with Alberta and non-Alberta facilities,Firm x year FE + firm-province FE (true within-firm-year),0.03917414088140693,0.18568553194717627,0.8329104111923258,1958,132,345.0,789.0
-All firms with Alberta and non-Alberta facilities,Event study (firm x year FE): joint test of leads 2013-2017,1.5069890134480732,,0.19193317095797013,1958,132,,
-"Large incumbents (>=50 kt in 2018, observed by 2016)",Firm FE + year FE,0.8071764572772688,0.3294085557792672,0.014270513547697214,1446,49,136.0,702.0
-"Large incumbents (>=50 kt in 2018, observed by 2016)",Firm-province FE + year FE,-0.0028467924386354204,0.12141437272189269,0.981293782772283,1446,49,136.0,702.0
-"Large incumbents (>=50 kt in 2018, observed by 2016)",Firm x year FE + firm-province FE (true within-firm-year),-0.0664919878728206,0.21996698640797538,0.762437350803062,1183,48,134.0,471.0
-"Large incumbents (>=50 kt in 2018, observed by 2016)",Event study (firm x year FE): joint test of leads 2013-2017,1.1303958392260656,,0.3575275754005361,1183,48,,

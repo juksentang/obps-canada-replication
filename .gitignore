@@ -44,3 +44,6 @@ data/analysis_ready/*.csv
 data/processed/4_panels/*
 !data/processed/4_panels/facility_year_greenpatent_merged_20251022.csv
 !data/processed/4_panels/company_year_panel_v1_20251111.csv
+
+# generated outputs (results): regenerate locally with `make all`; not tracked before publication
+analysis/outputs/
