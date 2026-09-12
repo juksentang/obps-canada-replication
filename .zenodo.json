@@ -1,0 +1,24 @@
+{
+  "title": "Replication package: Does Output Protection Blunt Carbon Pricing? Evidence from Large Industrial Emitters under Canada's National Price Floor",
+  "upload_type": "software",
+  "description": "<p>Code and data that reproduce every table, figure and number in the paper <em>Does Output Protection Blunt Carbon Pricing? Evidence from Large Industrial Emitters under Canada's National Price Floor</em> (Tang, Gong, Fu and Chen, 2026). The paper asks whether large emitters regulated under Alberta's output-based carbon-pricing systems (SGER, CCIR, TIER) responded differently from comparable large multi-province firms in other Canadian provinces once the Greenhouse Gas Pollution Pricing Act made a rising national carbon-price floor binding in 2019, using firm-level emissions (Greenhouse Gas Reporting Program, 2004&ndash;2023), green patent stocks (Canadian Intellectual Property Office, CPC Y02/Y04S) and sector-level emission intensity (Statistics Canada real GDP).</p><p>Contents: the 23-step data-construction pipeline (<code>pipeline/</code>), the estimation scripts (<code>analysis/</code>: two-way fixed-effects difference-in-differences with time-varying and pre-policy fixed treatment definitions, event studies with joint lead tests, a facility-level within-firm check, firm-, province- and sector&ndash;province-cell clustering, wild cluster bootstraps, Conley&ndash;Taber placebo provinces, cell-level permutation tests, Honest DiD relative-magnitudes confidence sets, heterogeneity and oil-price-cycle analyses), a Makefile that regenerates all outputs, the analysis-ready firm&ndash;year and company&ndash;province&ndash;year panels, the small raw inputs, and full variable documentation (<code>data/data_dictionary.md</code>, <code>data/analysis_ready/CODEBOOK.md</code>). Bulk public sources that are too large to redistribute (CIPO patent researcher datasets, Statistics Canada bulk tables) are fetched by <code>data/download.sh</code>. Data licences and required attribution statements are listed in <code>data/README.md</code>.</p>",
+  "creators": [
+    {"name": "Tang, Juk-Sen", "affiliation": "McGill University; Beijing Academy of Agriculture and Forestry Sciences", "orcid": "0009-0009-8849-874X"},
+    {"name": "Gong, Jing", "affiliation": "Beijing Academy of Agriculture and Forestry Sciences", "orcid": "0009-0001-5570-0819"},
+    {"name": "Fu, Yi", "affiliation": "McGill University", "orcid": "0009-0006-9560-4668"},
+    {"name": "Chen, Junhong", "affiliation": "Beijing Academy of Agriculture and Forestry Sciences", "orcid": "0009-0007-7201-3408"}
+  ],
+  "contributors": [
+    {"name": "Chen, Junhong", "type": "ContactPerson", "affiliation": "Beijing Academy of Agriculture and Forestry Sciences", "orcid": "0009-0007-7201-3408"}
+  ],
+  "access_right": "open",
+  "license": "MIT",
+  "language": "eng",
+  "version": "1.0-submission",
+  "keywords": ["carbon pricing", "output-based pricing", "emissions trading", "difference-in-differences", "industrial emissions", "green innovation", "Alberta", "Canada", "climate policy", "replication package"],
+  "related_identifiers": [
+    {"identifier": "10.20944/preprints202511.1753.v1", "relation": "isSupplementTo", "resource_type": "publication-preprint", "scheme": "doi"},
+    {"identifier": "https://github.com/juksentang/obps-canada-replication", "relation": "isSupplementTo", "resource_type": "software", "scheme": "url"}
+  ],
+  "notes": "Version 1.0-submission accompanies the manuscript submitted to Humanities and Social Sciences Communications (September 2026). Emissions data: Environment and Climate Change Canada, Greenhouse Gas Reporting Program (Open Government Licence - Canada). Output and price data: Statistics Canada (Statistics Canada Open Licence; 'Adapted from Statistics Canada, tables 36-10-0402-01 and 36-10-0478-01, 2025. This does not constitute an endorsement by Statistics Canada of this product.'). Patent counts derived from the Canadian Intellectual Property Office patent researcher datasets (Crown copyright, non-commercial reproduction)."
+}
