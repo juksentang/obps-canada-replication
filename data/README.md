@@ -53,3 +53,27 @@ Three intermediate inputs were produced during development by steps whose script
 In addition, step 15 reads a hand-assembled list of carbon contracts for difference (`cfd_contracts_database_v2_20251023.csv`) and two derived weight matrices that are not tracked; the CfD variables they produce are carried in the panels but are not used in the paper's estimates.
 
 Every number in the paper is produced from the tracked panels by the scripts in `analysis/`; the pipeline is provided to document how those panels were constructed.
+
+## Licences and required attribution
+
+Redistribution of the files in this directory is permitted by the licences of their sources, subject to the attribution statements below, which apply to any reuse of these files or of products derived from them.
+
+**Statistics Canada** (tables reproduced under `CPI/`, `Industrial Deflator/`, `Industry_GDP/`; Statistics Canada Open Licence, https://www.statcan.gc.ca/en/reference/licence):
+
+> Source: Statistics Canada, tables 18-10-0004-01, 18-10-0005-01, 18-10-0204-01, 18-10-0267-01, 36-10-0208-01, 36-10-0211-01, 36-10-0217-01, 36-10-0223-01 and 36-10-0434-03, downloaded 2025. Reproduced and distributed on an "as is" basis with the permission of Statistics Canada.
+
+The sector-level output and intensity variables in `analysis_ready/` are derived from Statistics Canada tables 36-10-0402-01 and 36-10-0478-01 together with the GHGRP emissions:
+
+> Adapted from Statistics Canada, tables 36-10-0402-01 and 36-10-0478-01, 2025. This does not constitute an endorsement by Statistics Canada of this product.
+
+The Statistics Canada Open Licence prohibits merging or linking the data in a way that identifies individuals, businesses or organisations; the sector–province aggregates used here do not do so.
+
+**Environment and Climate Change Canada, Greenhouse Gas Reporting Program** (`ghgrp/` and the emission variables in the panels; Open Government Licence – Canada, https://open.canada.ca/en/open-government-licence-canada):
+
+> Contains information licensed under the Open Government Licence – Canada.
+
+**Canadian Intellectual Property Office** (green patent counts and stocks in the panels are derived from the CIPO patent researcher datasets, distributed by Innovation, Science and Economic Development Canada under the Open Government Licence – Canada; the raw datasets themselves are not redistributed here):
+
+> Contains information licensed under the Open Government Licence – Canada.
+
+**U.S. Energy Information Administration** (WTI crude prices): U.S. federal government work, public domain.
