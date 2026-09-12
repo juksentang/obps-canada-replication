@@ -40,13 +40,13 @@ GROUPS = [('Single-province firms', 'Single-\\\\province'), ('All multi-province
 def col(g): return sel[sel.group == g].iloc[0]
 stats = [('Firms (2018)', lambda r: f"{int(r.firms_2018)}"), ('Firm-year observations', lambda r: f"{int(r.firm_years):,}"),
          ('Mean emissions, 2018 (kt CO$_2$e)', lambda r: f"{r.mean_emissions_kt:,.0f}"), ('Median emissions, 2018 (kt CO$_2$e)', lambda r: f"{r.median_emissions_kt:,.0f}"),
-         ('Share of all reported 2018 emissions (\\%)', lambda r: f"{100*r.share_ghgrp_emissions_2018:.1f}"), ('Mean number of facilities', lambda r: f"{r.mean_facilities:.1f}"),
-         ('Mean green patent stock', lambda r: f"{r.mean_patent_stock:.1f}"), ('Share with any green patents (\\%)', lambda r: f"{100*r.share_with_patents:.0f}"),
-         ('Share in EITE sectors (\\%)', lambda r: f"{100*r.share_eite:.0f}"), ('Share with Alberta as principal province (\\%)', lambda r: f"{100*r.share_alberta:.0f}")]
+         ('Share of 2018 GHGRP emissions (\\%)', lambda r: f"{100*r.share_ghgrp_emissions_2018:.1f}"), ('Mean facilities', lambda r: f"{r.mean_facilities:.1f}"),
+         ('Mean green patent stock', lambda r: f"{r.mean_patent_stock:.1f}"), ('Any green patents (\\%)', lambda r: f"{100*r.share_with_patents:.0f}"),
+         ('EITE sectors (\\%)', lambda r: f"{100*r.share_eite:.0f}"), ('Alberta-based (\\%)', lambda r: f"{100*r.share_alberta:.0f}")]
 rows = [name + ' & ' + ' & '.join(fn(col(g)) for g, _ in GROUPS) + ' \\\\' for name, fn in stats]
 head = ' & ' + ' & '.join('\\makecell{' + h + '}' for _, h in GROUPS) + ' \\\\'
 (TAB / 'tab_sample.tex').write_text(texminus(r"""\begin{table}[htbp]\centering\small
-\caption{Sample construction and representativeness: large emitters ($\geq$50 kt CO$_2$e baseline), 2018 cross-section}
+\caption{Sample construction and representativeness, 2018 cross-section}
 \label{tab:sample}
 \begin{tabular}{lcccc}
 \toprule
@@ -56,20 +56,20 @@ head = ' & ' + ' & '.join('\\makecell{' + h + '}' for _, h in GROUPS) + ' \\\\'
 \bottomrule
 \end{tabular}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: Firms reporting to the Greenhouse Gas Reporting Program with baseline emissions of at least 50 kt CO$_2$e: 271 single-province firms; 101 multi-province firms, of which 66 incumbents first observed in 2016 or earlier form the analysis sample and 35 entered the panel after the 2017 reporting-threshold change and lack a usable pre-period. ``Green patent stock'' is the perpetual-inventory stock with 15\% depreciation; EITE sectors are NAICS 211, 212, 311, 321, 322, 324, 325, 327, 331 and 332; ``principal province'' is the modal province of a firm's reporting facilities.
+Notes: GHGRP reporters with baseline emissions of at least 50 kt CO$_2$e: 271 single-province and 101 multi-province firms, of which 66 incumbents observed by 2016 form the analysis sample and 35 entered after the 2017 threshold change without a usable pre-period. Patent stock: perpetual inventory, 15\% depreciation. EITE sectors: NAICS 211, 212, 311, 321, 322, 324, 325, 327, 331, 332. Principal province: modal province of the firm's reporting facilities.
 \end{minipage}
 \end{table}
 """))
 # ---------------------------------------------------------------- Table: main results
 rows = []
-for y in OUT3:
+for y in OUTCOMES if False else OUT3:
     b = g(base, y); lb0, ub0, lb1, ub1 = honest_row(y); d = DEC[y]
     rows.append(f"{SHORT[y]} & {b.coef:.{d}f}{sig(b.p)} ({b.se:.{d}f}) & {b.p:.2f} & {wcb(y):.2f} & {perm(y):.2f} & {ptp(y,'leads k=-6'):.2f} & [{lb1:.{d}f}, {ub1:.{d}f}] \\\\")
     num[y] = dict(coef=b.coef, se=b.se, p=b.p, ci_lo=b.ci_lo, ci_hi=b.ci_hi, wcb=wcb(y), perm=perm(y), pretrend_p=ptp(y, 'leads k=-6'),
                   pretrend_all_p=ptp(y, 'all pre'), pretrend_1617_p=ptp(y, 'leads 2016'), post_joint_p=ptp(y, 'post'), honest_M0=[lb0, ub0], honest_M1=[lb1, ub1], N=int(b.N))
-hnote = ('Honest DiD confidence sets are conditional--least-favourable hybrid sets (Rambachan and Roth, 2023) for the average 2019--2023 coefficient relative to 2018 under the relative-magnitudes restriction, computed with the reference implementation; at $\\bar M=1$ the post-period deviation from parallel trends between consecutive years may be at most the largest observed pre-period deviation. The full $\\bar M$ grid and the fixed-exposure sets are in Supplementary Table S4.')
+hnote = ('Honest DiD: conditional--least-favourable hybrid 95\\% sets at $\\bar M=1$ (Rambachan and Roth, 2023; Supplementary Table S5).')
 (TAB / 'tab_main.tex').write_text(texminus(r"""\begin{table}[htbp]\centering\small
-\caption{Differential response of Alberta-based large multi-province firms to the onset of the binding national carbon-price floor (2019), under Alberta's output-based system: difference-in-differences estimates, 66 firms, 2004--2023}
+\caption{Baseline difference-in-differences estimates: differential response of Alberta-based large multi-province firms after the 2019 national price floor, 66 firms, 2004--2023}
 \label{tab:main}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lcccccc}
@@ -83,7 +83,7 @@ Outcome & $\hat\beta$ (SE) & Cluster & Wild boot. & Permut. & joint $p$ & 95\% C
 \end{tabular}
 \end{adjustbox}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: Each row is a separate regression of the outcome on Alberta $\times$ post-2019 with firm and year fixed effects (Equation~\ref{eq:did}); $N=935$ firm-years, 66 firms. Standard errors clustered by firm in parentheses. ``Wild boot.'' is the wild cluster bootstrap $p$-value (Rademacher weights, 1,999 replications); ``Permut.'' is the Fisher permutation $p$-value from 2,000 random reassignments of Alberta status across the firm--province cells (holding the number of Alberta cells fixed), two-sided. ``Pre-trend joint $p$'' is the cluster-robust $F$-test that the five lead coefficients for 2013--2017 in the event-study specification (Equation~\ref{eq:es}) are jointly zero. """ + hnote + r""" $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$ (cluster-robust).
+Notes: Equation~\ref{eq:did}, one regression per outcome; $N=935$, 66 firms; firm-clustered standard errors in parentheses. Wild bootstrap: Rademacher weights, 1,999 replications. Permutation: 2,000 reassignments across firm--province cells, two-sided. Pre-trend: joint test that the 2013--2017 leads of Equation~\ref{eq:es} are zero. """ + hnote + r""" $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$ (cluster-robust).
 \end{minipage}
 \end{table}
 """))
@@ -117,7 +117,7 @@ Specification & Green patents & Intensity & Log emissions \\
 \end{tabular}
 \end{adjustbox}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: Alberta $\times$ post-2019 coefficients with firm-clustered standard errors in parentheses; all regressions include firm and year fixed effects. Panel A adds interactions of 2018 firm characteristics (log emissions, log green patent stock, number of facilities, sector emission intensity) with a full set of year dummies, NAICS 3-digit $\times$ year fixed effects, or province-specific linear trends. Panel B adds the log annual WTI crude price, alone and interacted with the Alberta indicator (and its lag). Panel C re-estimates the baseline on restricted windows. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
+Notes: Alberta $\times$ post-2019 coefficients; firm and year fixed effects; firm-clustered standard errors in parentheses. Panel A adds 2018 firm characteristics $\times$ year effects, NAICS 3-digit $\times$ year effects or province-specific linear trends; panel B adds the log annual WTI price and its Alberta interaction (and lag); panel C restricts the sample window. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
 \end{minipage}
 \end{table}
 """))
@@ -144,7 +144,7 @@ Published series ($\\delta=0.15$, allocated across provinces) & {cs(pub.coef,pub
 \\end{{tabular}}
 \\end{{adjustbox}}
 \\par\\vspace{{3pt}}\\begin{{minipage}}{{\\textwidth}}\\footnotesize
-Notes: Patent stocks re-constructed from annual green patent flows (fractional counts) by the perpetual-inventory method at the firm level, $S_t=(1-\\delta)S_{{t-1}}+F_t$, for three depreciation rates; the published series allocates the firm stock across provinces by facility NAICS weights, which explains the small difference at $\\delta=0.15$. Firm and year fixed effects; standard errors clustered by firm; $N=935$, 66 firms.
+Notes: Firm-level stocks rebuilt from annual fractional flows, $S_t=(1-\\delta)S_{{t-1}}+F_t$; the published series allocates the firm stock across provinces by facility NAICS weights, hence the small difference at $\\delta=0.15$. Firm and year fixed effects; firm-clustered standard errors; $N=935$, 66 firms.
 \\end{{minipage}}
 \\end{{table}}
 """))
@@ -157,7 +157,7 @@ for y in OUT3:
     rows.append(f"{LAB[y]} & " + ' & '.join(cells) + f" & {jp:.3f} \\\\")
     num[y]['segmented'] = {p: dict(coef=s[s.period == p].iloc[0].coef, se=s[s.period == p].iloc[0].se, p=s[s.period == p].iloc[0].p) for p in ['2016-17 announcement', '2018 legislation', '2019+ implementation']}; num[y]['segmented_joint_p'] = jp
 (TAB / 'tab_segmented.tex').write_text(texminus(r"""\begin{table}[htbp]\centering\footnotesize
-\caption{Policy-stage specification: announcement (2016--17), legislation (2018) and implementation (2019--23)}
+\caption{Policy-stage specification: announcement, legislation and implementation}
 \label{tab:segmented}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lcccc}
@@ -169,18 +169,18 @@ Outcome & Alberta $\times$ 2016--17 & Alberta $\times$ 2018 & Alberta $\times$ 2
 \end{tabular}
 \end{adjustbox}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: Equation~\ref{eq:stage} with mutually exclusive period indicators, reference period 2004--2015; firm and year fixed effects; standard errors clustered by firm in parentheses. Same 66-firm sample ($N=935$) as Table~\ref{tab:main}. ``Joint $p$'' tests that all three coefficients are zero. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
+Notes: Equation~\ref{eq:stage}, mutually exclusive period indicators, reference period 2004--2015; firm and year fixed effects; firm-clustered standard errors in parentheses; $N=935$, 66 firms. ``Joint $p$'' tests that all three coefficients are zero. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
 \end{minipage}
 \end{table}
 """))
 # ---------------------------------------------------------------- Table: heterogeneity
 rows = []
-dims = ['Prior green patents in 2018 (vs. none)', 'EITE sector (vs. non-EITE)', 'Above-median 2018 emissions (vs. below)']
+dims = ['Prior green patents in 2018 (vs. none)', 'EITE sector (vs. non-EITE)', 'Above-median 2018 emissions (vs. below)']; DIMLAB = {dims[0]: 'Prior patents', dims[1]: 'EITE', dims[2]: 'Large'}
 for y in OUT3 + ['ln_I']:
     rows.append(f"\\multicolumn{{6}}{{l}}{{\\textit{{{LAB[y]}}}}} \\\\")
     for dm in dims:
         h = het[(het.outcome == y) & (het.dimension == dm)].iloc[0]; d = DEC[y]
-        rows.append(f"\\quad {dm} & {int(h.n_firms_high)}/{int(h.n_firms_low)} & {cs(h.high_coef,h.high_se,h.high_p,d)} & {cs(h.low_coef,h.low_se,h.low_p,d)} & {h['diff']:.{d}f} & {h.diff_p:.3f} \\\\")
+        rows.append(f"\\quad {DIMLAB[dm]} & {int(h.n_firms_high)}/{int(h.n_firms_low)} & {cs(h.high_coef,h.high_se,h.high_p,d)} & {cs(h.low_coef,h.low_se,h.low_p,d)} & {h['diff']:.{d}f} & {h.diff_p:.3f} \\\\")
         num.setdefault('hetero', {})[f'{y}|{dm}'] = dict(high=h.high_coef, high_p=h.high_p, low=h.low_coef, low_p=h.low_p, diff=h['diff'], diff_p=h.diff_p, n_high=int(h.n_firms_high), n_low=int(h.n_firms_low))
 (TAB / 'tab_hetero.tex').write_text(texminus(r"""\begin{table}[htbp]\centering\footnotesize
 \caption{Heterogeneous responses by prior innovation capacity, trade exposure and size}
@@ -188,14 +188,14 @@ for y in OUT3 + ['ln_I']:
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lccccc}
 \toprule
-Outcome / split & Firms (high/low) & High group & Low group & Difference & $p$ (diff.) \\
+Outcome / split & Firms (high/low) & With & Without & Difference & $p$ (diff.) \\
 \midrule
 """ + '\n'.join(rows) + r"""
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: Each row is a separate regression in which Alberta $\times$ post-2019 is interacted with a binary firm characteristic measured in 2018 (Equation~\ref{eq:het}); coefficients are the group-specific treatment effects with firm-clustered standard errors in parentheses; each regression also includes the characteristic interacted with the post-2019 indicator, so that control firms of each type may have their own post-2019 shift. ``$p$ (diff.)'' tests equality of the two group effects. EITE: NAICS 211, 212, 311, 321, 322, 324, 325, 327, 331, 332. Firm and year fixed effects; $N=935$ (934 for log sector intensity). $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
+Notes: Equation~\ref{eq:het}: Alberta $\times$ post-2019 interacted with a binary characteristic (``Prior patents'': positive green patent stock in 2018; ``EITE'': sector as in Table~\ref{tab:sample}; ``Large'': above-median 2018 emissions), with the characteristic $\times$ post-2019 control; group effects with firm-clustered standard errors in parentheses; ``$p$ (diff.)'' tests their equality. Firm and year fixed effects; $N=935$ (934 for log sector intensity). $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
 \end{minipage}
 \end{table}
 """))
@@ -219,7 +219,7 @@ for y in ['ln_E', 'ln_I', 'ln_Y']:
 \end{tabular}
 \end{adjustbox}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: $E$ is firm emissions (GHGRP); $I$ is the emission intensity of the firm's NAICS 3-digit sector in its province (GHGRP sector emissions divided by real sector GDP, Statistics Canada, 2015 dollars); $Y=E/I$ is the firm's implied real output. Because $Y$ is imputed from $E$ and $I$, the three coefficients sum exactly within each column. Alberta $\times$ post-2019 coefficients, firm and year fixed effects, firm-clustered standard errors in parentheses; $N=934$ (one observation lacks a sector deflator). The last two columns report cluster-robust $F$-tests that the event-study lead coefficients are jointly zero. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
+Notes: $E$ is firm emissions; $I$ the emission intensity of the firm's NAICS 3-digit sector in its province (GHGRP sector emissions over real sector GDP, 2015 dollars); $Y=E/I$ is implied real output, so the three coefficients sum exactly within each column. Alberta $\times$ post-2019 coefficients; firm and year fixed effects; firm-clustered standard errors in parentheses; $N=934$. Last two columns: joint tests that the event-study leads are zero. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
 \end{minipage}
 \end{table}
 """))
@@ -247,7 +247,7 @@ Specification & $\hat\beta$ (SE) & $p$ & $N$ & Firms & Firm--province cells \\
 \end{tabular}
 \end{adjustbox}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: Outcome is log emissions of a firm's facilities aggregated within each province and year. The third specification in each panel includes firm $\times$ year and firm--province fixed effects, so the Alberta $\times$ post-2019 coefficient is identified only from firm--years in which the same firm reports both Alberta and non-Alberta facilities. Standard errors clustered by firm. The event-study row reports the joint test of the 2013--2017 leads in the firm $\times$ year specification.
+Notes: Outcome: log emissions of a firm's facilities within each province and year. The third specification of each panel includes firm $\times$ year and firm--province effects, so Alberta $\times$ post-2019 is identified only from firm-years with facilities both inside and outside Alberta. Firm-clustered standard errors. The event-study row is the joint test of the 2013--2017 leads in that specification.
 \end{minipage}
 \end{table}
 """))
@@ -300,7 +300,7 @@ num['depreciation'] = dep.to_dict('records'); num['windows'] = sw.to_dict('recor
 (SUB / 'numbers.json').write_text(json.dumps(num, indent=1, default=float))
 print('Tables written:', sorted(p.name for p in TAB.glob('*.tex')))
 
-# ---------------------------------------------------------------- fixed treatment, multi-level inference, Honest DiD
+# ============================================================================ Round 4 tables (fixed treatment, multi-level inference, official Honest DiD)
 def _csv(name):
     p = T / name; return pd.read_csv(p) if p.exists() else None
 ft = _csv('80_fixed_treatment.csv'); fp = _csv('80_fixed_pretrend.csv'); inf = _csv('81_inference.csv'); ho = _csv('82_honestdid_official.csv')
@@ -319,7 +319,7 @@ if ft is not None:
            {'all_firms': ('All 66 firms', 'firms'), 'all_treated': ('All 66 firms', 'treated_firms'), 'ns_firms': ('Non-switchers (no change of principal province 2004-2023)', 'firms'), 'ns_treated': ('Non-switchers (no change of principal province 2004-2023)', 'treated_firms'), 'n17_firms': ('No switch from 2017 onward', 'firms'), 'n17_treated': ('No switch from 2017 onward', 'treated_firms')}.items()}
     tvt = int(ft[(ft['sample'] == 'All 66 firms') & (ft.treatment.str.startswith('Time')) & (ft.outcome == 'ln_E')].iloc[0].treated_firms)
     (TAB / 'tab_fixed.tex').write_text(texminus(r"""\begin{table}[htbp]\centering\small
-\caption{Treatment defined by the pre-policy principal province: fixed-exposure estimates and switching-robust subsamples}
+\caption{Fixed-exposure estimates and switching-robust subsamples}
 \label{tab:fixed}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lccccc c}
@@ -333,7 +333,7 @@ Outcome & \makecell{Time-varying\\(baseline; """ + str(tvt) + r""" treated)} & \
 \end{tabular}
 \end{adjustbox}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: Alberta $\times$ post-2019 coefficients with firm-clustered standard errors in parentheses; firm and year fixed effects. ``Time-varying'' uses the firm's principal province in each year (the baseline of Table~\ref{tab:main}); ``Fixed 2018'' uses the principal province observed in 2018, so treatment status cannot change after the policy; ``Fixed modal'' uses the modal province over 2014--2018. ``Never switch'' keeps firms whose principal province never changes over 2004--2023; ``No switch from 2017'' drops firms that change principal province in 2017 or later. The last column is the cluster-robust $F$-test that the 2013--2017 leads are jointly zero in the fixed-2018 event study. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
+Notes: Alberta $\times$ post-2019 coefficients; firm and year fixed effects; firm-clustered standard errors in parentheses. Treatment: principal province in each year (baseline), in 2018, or modal over 2014--2018; subsamples exclude firms whose principal province changes (ever, or from 2017 on). Last column: joint test that the 2013--2017 leads are zero in the fixed-2018 event study. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
 \end{minipage}
 \end{table}
 """))
@@ -358,8 +358,31 @@ if inf is not None:
     def _pl(tt): return list(json.loads(inf[(inf.label.str.startswith('Main')) & (inf.label.str.contains(tt)) & (inf.outcome == 'green_patent_stock')].iloc[0].placebo_json).keys())
     pl_tv, pl_fx = _pl('time-varying'), _pl('fixed-2018')
     def _provlist(l): return ', '.join(l[:-1]) + ' and ' + l[-1]
+    # ---- compact main-text inference table: fixed 2018 exposure, headline outcomes + the two narrative contrasts
+    def crow(lab_prefix, y, name, d):
+        m = inf[(inf.label.str.startswith(lab_prefix)) & (inf.label.str.contains('fixed-2018')) & (inf.outcome == y)].iloc[0]
+        return f"{name} & {m.coef:.{d}f} & {m.p_firm:.2f} & {m.p_wild_cell:.2f} & {m.placebo_p:.2f} ({int(m.placebo_n)}) \\\\"
+    crows = [crow('Main effect', y, OUT3L[y], DEC[y]) for y in ['green_patent_stock', 'intensity_co2e_per_m_gdp', 'ln_E']]
+    crows += ['\\addlinespace', crow('Oil-sector', 'ln_E', 'Oil-exposed minus other sectors, log emissions', 3), crow('Prior', 'green_patent_stock', 'Prior innovators minus others, green patents', 1)]
+    (TAB / 'tab_inference_main.tex').write_text(texminus(r"""\begin{table}[htbp]\centering\small
+\caption{Inference at the level at which the policy varies: fixed 2018 principal province}
+\label{tab:inference_main}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcccc}
+\toprule
+Estimate & $\hat\beta$ & Firm-cluster $p$ & Cell wild-bootstrap $p$ & Placebo-province $p$ (no. of placebos) \\
+\midrule
+""" + '\n'.join(crows) + r"""
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
+Notes: Alberta $\times$ post-2019 with treatment fixed at the 2018 principal province; firm and year fixed effects; CR1 estimator with a $t(G-1)$ reference distribution (Section~\ref{sec:inference}). Cell bootstrap: """ + str(G_cell) + r""" NAICS-3 $\times$ province cells, Webb weights, null imposed. Placebo $p=(k+1)/(N+1)$ over $N$ control provinces, floor $1/(N+1)$. Contrasts are differences between group effects. Full set: Supplementary Table S1.
+\end{minipage}
+\end{table}
+"""))
     (TAB / 'tab_inference.tex').write_text(texminus(r"""\begin{table}[htbp]\centering\footnotesize
-\caption{Inference at the level at which the policy varies: $p$-values for the headline estimates and the heterogeneity contrasts under alternative clustering, wild cluster bootstraps and placebo provinces}
+\caption{Inference at the level at which the policy varies: headline estimates and heterogeneity contrasts under alternative clustering, wild cluster bootstraps and placebo provinces, both treatment definitions}
 \label{tab:inference}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lccccccc}
@@ -373,7 +396,7 @@ Estimate & $\hat\beta$ & Firm-cluster $p$ & Province-cluster $p$ & Province wild
 \end{tabular}
 \end{adjustbox}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: Firm and year fixed effects throughout. All $p$-values in this table use the CR1 cluster-robust estimator with a $t(G-1)$ reference distribution, so the firm-cluster values differ slightly from the software defaults reported in Table~\ref{tab:main}. ``Firm-cluster'' uses 66 clusters. ``Province'' clusters by the principal province: """ + str(G_prov) + r""" clusters under the time-varying definition and """ + str(G_prov_fx) + r""" under fixed 2018 exposure (the distinct 2018 principal provinces), each with a $t(G-1)$ reference distribution; because Alberta is the only treated province, province-level cluster-robust and wild-bootstrap $p$-values are reported for transparency but are not reliable guides to size (MacKinnon and Webb, 2017). Wild cluster bootstraps impose the null, use Webb six-point weights and 2,999 (province) or 999 (cell) replications, and compare percentile-$t$ statistics. ``Sector--province cell'' clusters by NAICS-3 $\times$ province (""" + str(G_cell) + r""" cells), the level at which the intensity outcome is measured. The placebo-province $p$-value follows Conley and Taber (2011): Alberta-based firms are dropped and each control province with at least four firms is assigned the post-2019 treatment in turn (""" + _provlist(pl_tv) + r""" under the time-varying definition; """ + _provlist(pl_fx) + r""" under fixed exposure); $p = (k+1)/(N+1)$, where $k$ is the number of placebo estimates at least as large in absolute value as Alberta's and $N$ the number of placebo provinces (in parentheses), so the floor is $1/(N+1)$: 0.17 with five placebos and 0.25 with three. For the contrasts only provinces containing firms of both groups in the post period qualify, so fewer placebos are available. Heterogeneity contrasts include the characteristic $\times$ post-2019 control. $\hat\beta$ for the contrasts is the difference between the two group effects.
+Notes: Firm and year fixed effects; all $p$-values use the CR1 estimator with a $t(G-1)$ reference distribution (Section~4.5 of the main text), so firm-cluster values differ slightly from Table~2 of the main text. Clusters: 66 firms; """ + str(G_prov) + r""" (time-varying) or """ + str(G_prov_fx) + r""" (fixed 2018) provinces; """ + str(G_cell) + r""" NAICS-3 $\times$ province cells. Wild bootstraps impose the null with Webb weights, 2,999 (province) or 999 (cell) replications. Placebo $p=(k+1)/(N+1)$ over the $N$ placebo provinces in parentheses (""" + _provlist(pl_tv) + r"""; """ + _provlist(pl_fx) + r""" under fixed exposure; contrasts use only provinces with firms of both groups), floor $1/(N+1)$. With Alberta the only treated province, province-level values are not reliable guides to size (MacKinnon and Webb, 2017). Contrast rows report the difference between group effects.
 \end{minipage}
 \end{table}
 """))
@@ -399,8 +422,8 @@ Outcome & Parallel trends ($\bar M=0$) & $\bar M=0.5$ & $\bar M=1$ & $\bar M=1.5
 \end{tabular}
 \end{adjustbox}
 \par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
-Notes: Conditional--least-favourable hybrid confidence sets (Rambachan and Roth, 2023) computed with the reference implementation (\texttt{honestdid}), using the event-study coefficients for 2013--2017 (five leads) and 2019--2023 (five lags) relative to 2018 and their firm-clustered covariance matrix; the target is the equally weighted average of the five post-period coefficients. Under $\bar M$, the post-period deviation from parallel trends between consecutive years may be at most $\bar M$ times the largest observed pre-period deviation. $\bar M=0$ reproduces the conventional 95\% confidence interval.
+Notes: Conditional--least-favourable hybrid sets (Rambachan and Roth, 2023; \texttt{honestdid}) from the 2013--2017 leads and 2019--2023 lags relative to 2018 with their firm-clustered covariance; the target is the equally weighted average of the five post-period coefficients. $\bar M$ bounds the post-period deviation from parallel trends between consecutive years at $\bar M$ times the largest pre-period deviation; $\bar M=0$ is the conventional interval.
 \end{minipage}
 \end{table}
 """))
-    print('additional tables written:', [p.name for p in TAB.glob('tab_*.tex') if p.name in ('tab_fixed.tex', 'tab_inference.tex', 'tab_honest.tex')])
+    print('additional tables written:', [p.name for p in TAB.glob('tab_*.tex') if p.name in ('tab_fixed.tex', 'tab_inference.tex', 'tab_inference_main.tex', 'tab_honest.tex')])
