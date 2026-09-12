@@ -1,5 +1,8 @@
 # Does Output Protection Blunt Carbon Pricing? — replication package
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22726936.svg)](https://doi.org/10.5281/zenodo.22726936)
+
+
 Code, derived data and manuscript sources for
 
 > Tang J-S, Gong J, Fu Y, Chen J (2026) *Does Output Protection Blunt Carbon Pricing? Evidence from Large Industrial Emitters under Canada's National Price Floor.* Manuscript.
@@ -53,6 +56,6 @@ The derived panels needed to reproduce every estimate in the paper are tracked (
 
 ## Citation and licence
 
-Code: MIT License (see `LICENSE`). Derived data files retain the licences of their sources listed above. If you use this material, please cite the paper.
+Code: MIT License (see `LICENSE`). Derived data files retain the licences of their sources listed above. If you use this material, please cite the paper and the archived package (Zenodo, https://doi.org/10.5281/zenodo.22726936; concept DOI for all versions: https://doi.org/10.5281/zenodo.22726935).
 
 Corresponding author: Junhong Chen (chenjunhong@baafs.net.cn). Code and data questions: Juk-Sen Tang (juksen.tang@mail.mcgill.ca).

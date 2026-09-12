@@ -19,6 +19,7 @@ authors:
     given-names: Junhong
     orcid: "https://orcid.org/0009-0007-7201-3408"
     affiliation: "Beijing Academy of Agriculture and Forestry Sciences"
+doi: 10.5281/zenodo.22726936
 repository-code: "https://github.com/juksentang/obps-canada-replication"
 license: MIT
 version: "1.0-submission"
