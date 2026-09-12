@@ -72,8 +72,8 @@ The Statistics Canada Open Licence prohibits merging or linking the data in a wa
 
 > Contains information licensed under the Open Government Licence – Canada.
 
-**Canadian Intellectual Property Office** (green patent counts and stocks in the panels are derived from the CIPO patent researcher datasets, distributed by Innovation, Science and Economic Development Canada under the Open Government Licence – Canada; the raw datasets themselves are not redistributed here):
+**Canadian Intellectual Property Office** (the green patent counts and stocks in the panels are derived from the CIPO patent researcher datasets). The raw datasets are Government of Canada (Crown copyright) material distributed by Innovation, Science and Economic Development Canada; they may be reproduced for non-commercial purposes with attribution, while commercial redistribution requires written permission (https://ised-isde.canada.ca/site/canadian-intellectual-property-office/en/terms-and-conditions). The raw records are therefore not redistributed here; only firm-level counts derived from them are. Attribution:
 
-> Contains information licensed under the Open Government Licence – Canada.
+> Patent counts derived from the Canadian Intellectual Property Office patent researcher datasets (bibliographic and classification files, 23 May 2024 release), Innovation, Science and Economic Development Canada; reproduced for non-commercial research purposes.
 
 **U.S. Energy Information Administration** (WTI crude prices): U.S. federal government work, public domain.
