@@ -1,0 +1,27 @@
+{
+  "project": "Carbon Price Certainty, Creative Destruction, and Green Innovation",
+  "phase": "Stage 2: CIPO Patent Data Extraction",
+  "total_zip_files": 149,
+  "date_created": "2025-10-22T05:07:05.681385",
+  "priority_approach": {
+    "1_extract": [
+      "PT_main",
+      "PT_title",
+      "PT_IPC",
+      "PT_CPC"
+    ],
+    "2_defer": [
+      "PT_abstract",
+      "PT_claim",
+      "PT_disclosure"
+    ],
+    "rationale": "Main patent tables and CPC classifications are highest priority for GreenPatent_it variable"
+  },
+  "next_steps": [
+    "Extract main patent tables (PT_main_*.zip)",
+    "Filter for Y02 and Y04S CPC classifications",
+    "Standardize applicant names",
+    "Create firm-year panel with patent counts",
+    "Link to GHGRP facility-level data"
+  ]
+}

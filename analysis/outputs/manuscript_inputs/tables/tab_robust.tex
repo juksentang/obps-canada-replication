@@ -1,0 +1,36 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{Robustness of the three main estimates to firm-characteristic trends, sector--year shocks, oil prices and sample windows}
+\label{tab:robust}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccc}
+\toprule
+Specification & Green patents & Intensity & Log emissions \\
+\midrule
+\multicolumn{4}{l}{\textit{A. Firm-characteristic trends and sector--year shocks}} \\
+\quad Baseline (firm + year FE) & 19.91 (15.55) & $-$181.4 (120.7) & 0.053 (0.163) \\
+\quad + 2018 size (ln emissions) $\times$ year FE & 17.17 (14.61) & $-$191.0 (127.4) & 0.090 (0.162) \\
+\quad + 2018 patent stock (ln) $\times$ year FE & 15.20 (10.82) & $-$168.9 (122.6) & 0.073 (0.157) \\
+\quad + 2018 facility count $\times$ year FE & 20.67 (16.03) & $-$193.9 (123.0) & 0.018 (0.150) \\
+\quad + 2018 sector intensity $\times$ year FE & 15.59 (14.50) & $-$113.0 (150.0) & 0.120 (0.162) \\
+\quad + NAICS-3 $\times$ year FE & $-$13.47 (11.80) & $-$333.1 (257.6) & $-$0.131 (0.241) \\
+\quad + province linear trends & 19.17 (17.02) & $-$52.9 (88.3) & $-$0.027 (0.149) \\
+\quad + all firm characteristics $\times$ year FE + NAICS $\times$ year FE & 11.27 (10.39) & $-$330.9 (254.1) & $-$0.291$^{*}$ (0.156) \\
+\addlinespace
+\multicolumn{4}{l}{\textit{B. Oil-price controls}} \\
+\quad + ln WTI & 19.91 (15.55) & $-$181.4 (120.8) & 0.053 (0.163) \\
+\quad + Alberta $\times$ ln WTI & 24.37 (16.93) & $-$239.8$^{*}$ (135.0) & $-$0.044 (0.154) \\
+\quad + Alberta $\times$ ln WTI + Alberta $\times$ ln WTI(t-1) & 22.76 (16.83) & $-$235.3$^{*}$ (135.5) & $-$0.009 (0.150) \\
+\quad + Alberta $\times$ ln WTI + NAICS $\times$ year FE & $-$10.91 (13.36) & $-$436.5 (281.2) & $-$0.292 (0.264) \\
+\addlinespace
+\multicolumn{4}{l}{\textit{C. Sample windows}} \\
+\quad Exclude 2023 (patent truncation) & 22.80 (15.99) & $-$192.7 (119.9) & 0.023 (0.155) \\
+\quad Pre-COVID: 2004--2019 & 24.74$^{*}$ (13.58) & $-$202.4$^{*}$ (105.6) & $-$0.075 (0.128) \\
+\quad Exclude 2020--2021 (pandemic years) & 14.99 (13.95) & $-$124.7 (121.7) & 0.093 (0.174) \\
+\quad Firms observed 2016--2023 & 13.81 (15.64) & $-$198.8 (130.7) & 0.111 (0.170) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
+Notes: Alberta $\times$ post-2019 coefficients with firm-clustered standard errors in parentheses; all regressions include firm and year fixed effects. Panel A adds interactions of 2018 firm characteristics (log emissions, log green patent stock, number of facilities, sector emission intensity) with a full set of year dummies, NAICS 3-digit $\times$ year fixed effects, or province-specific linear trends. Panel B adds the log annual WTI crude price, alone and interacted with the Alberta indicator (and its lag). Panel C re-estimates the baseline on restricted windows. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
+\end{minipage}
+\end{table}

@@ -1,0 +1,20 @@
+\begin{table}[htbp]\centering\small
+\caption{Differential response of Alberta-based large multi-province firms to the onset of the binding national carbon-price floor (2019), under Alberta's output-based system: difference-in-differences estimates, 66 firms, 2004--2023}
+\label{tab:main}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcccccc}
+\toprule
+ & & \multicolumn{3}{c}{$p$-value} & Pre-trend & Honest DiD \\
+\cmidrule(lr){3-5}
+Outcome & $\hat\beta$ (SE) & Cluster & Wild boot. & Permut. & joint $p$ & 95\% CS, $\bar M=1$ \\
+\midrule
+Green patent stock (count) & 19.91 (15.55) & 0.20 & 0.50 & 0.27 & 0.31 & [$-$39.60, 77.25] \\
+Emission intensity (tCO$_2$e/\$M) & $-$181.4 (120.7) & 0.13 & 0.51 & 0.16 & 0.28 & [$-$577.3, 488.5] \\
+Log total emissions & 0.053 (0.163) & 0.74 & 0.75 & 0.74 & 0.62 & [$-$0.964, 1.490] \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
+Notes: Each row is a separate regression of the outcome on Alberta $\times$ post-2019 with firm and year fixed effects (Equation~\ref{eq:did}); $N=935$ firm-years, 66 firms. Standard errors clustered by firm in parentheses. ``Wild boot.'' is the wild cluster bootstrap $p$-value (Rademacher weights, 1,999 replications); ``Permut.'' is the Fisher permutation $p$-value from 2,000 random reassignments of Alberta status across the firm--province cells (holding the number of Alberta cells fixed), two-sided. ``Pre-trend joint $p$'' is the cluster-robust $F$-test that the five lead coefficients for 2013--2017 in the event-study specification (Equation~\ref{eq:es}) are jointly zero. Honest DiD confidence sets are conditional--least-favourable hybrid sets (Rambachan and Roth, 2023) for the average 2019--2023 coefficient relative to 2018 under the relative-magnitudes restriction, computed with the reference implementation; at $\bar M=1$ the post-period deviation from parallel trends between consecutive years may be at most the largest observed pre-period deviation. The full $\bar M$ grid and the fixed-exposure sets are in Supplementary Table S4. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$ (cluster-robust).
+\end{minipage}
+\end{table}

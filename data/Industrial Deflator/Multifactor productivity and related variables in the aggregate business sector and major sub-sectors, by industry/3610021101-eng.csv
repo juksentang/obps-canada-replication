@@ -1,0 +1,34 @@
+﻿"Multifactor productivity and related variables in the aggregate business sector and major sub-sectors, by industry 1"
+"Frequency: Annual"
+"Table: 36-10-0211-01 (formerly CANSIM 383-0026)"
+"Release date: 2025-04-14"
+"Geography: Province or territory"
+""
+""
+
+"North American Industry Classification System (NAICS)","Business sector industries 1",,,,
+"Labour productivity measures and related measures","Multifactor productivity 2",,,,
+"Geography","2019","2020","2021","2022","2023"
+,"Index, 2017=100",,,,
+"Newfoundland and Labrador","96.562","97.693","92.692","87.648","82.620"
+"Prince Edward Island","99.373","98.753","102.696","102.855","100.384"
+"Nova Scotia","101.223","102.394","103.177","103.156","101.029"
+"New Brunswick","100.568","99.800","101.184","100.608","98.044"
+"Quebec","100.963","101.639","102.804","103.100","100.832"
+"Ontario","99.728","101.219","99.189","98.932","96.750"
+"Manitoba","98.888","98.192","94.002","98.755","96.530"
+"Saskatchewan","97.697","98.166","92.837","100.103","100.942"
+"Alberta","99.107","97.288","97.418","101.069","100.996"
+"British Columbia","98.685","99.974","99.460","97.932","97.038"
+
+
+
+
+Footnotes:
+1,"The business sector covers the whole economy less public administration, non-profit institutions and the rental value of owner-occupied dwellings."
+2,"Multifactor productivity measures the efficiency with which all inputs are used in production. It is the ratio of real gross domestic product (GDP) to combined labour and capital inputs."
+
+
+
+"How to cite: Statistics Canada. Table 36-10-0211-01  Multifactor productivity and related variables in the aggregate business sector and major sub-sectors, by industry"
+https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3610021101

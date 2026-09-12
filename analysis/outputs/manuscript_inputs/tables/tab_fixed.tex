@@ -1,0 +1,22 @@
+\begin{table}[htbp]\centering\small
+\caption{Treatment defined by the pre-policy principal province: fixed-exposure estimates and switching-robust subsamples}
+\label{tab:fixed}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccccc c}
+\toprule
+ & \multicolumn{3}{c}{All 66 firms} & \multicolumn{2}{c}{Fixed 2018 exposure, subsamples} & Pre-trend \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-6}
+Outcome & \makecell{Time-varying\\(baseline; 45 treated)} & \makecell{Fixed 2018\\(37 treated)} & \makecell{Fixed modal\\2014--18 (36 treated)} & \makecell{Never switch\\(35 firms)} & \makecell{No switch\\from 2017 (43 firms)} & \makecell{joint $p$,\\fixed 2018} \\
+\midrule
+Green patent stock & 19.91 (15.55) & 32.38$^{**}$ (16.10) & 27.67$^{*}$ (16.25) & 27.89 (20.90) & 32.14$^{*}$ (19.35) & 0.09 \\
+Emission intensity (tCO$_2$e/\$M) & $-$181.4 (120.7) & $-$184.8 (124.8) & $-$178.8 (124.5) & $-$364.8 (272.0) & $-$293.0 (184.5) & 0.39 \\
+Log total emissions & 0.053 (0.163) & 0.019 (0.163) & 0.079 (0.168) & $-$0.012 (0.179) & $-$0.068 (0.180) & 0.60 \\
+Log sector intensity & $-$0.346$^{*}$ (0.197) & $-$0.109 (0.222) & $-$0.051 (0.221) & $-$0.148 (0.187) & $-$0.314$^{*}$ (0.185) & 0.65 \\
+Log implied output & 0.400$^{**}$ (0.160) & 0.128 (0.169) & 0.130 (0.170) & 0.136$^{**}$ (0.057) & 0.247$^{***}$ (0.063) & 0.30 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
+Notes: Alberta $\times$ post-2019 coefficients with firm-clustered standard errors in parentheses; firm and year fixed effects. ``Time-varying'' uses the firm's principal province in each year (the baseline of Table~\ref{tab:main}); ``Fixed 2018'' uses the principal province observed in 2018, so treatment status cannot change after the policy; ``Fixed modal'' uses the modal province over 2014--2018. ``Never switch'' keeps firms whose principal province never changes over 2004--2023; ``No switch from 2017'' drops firms that change principal province in 2017 or later. The last column is the cluster-robust $F$-test that the 2013--2017 leads are jointly zero in the fixed-2018 event study. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
+\end{minipage}
+\end{table}

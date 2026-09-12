@@ -1,0 +1,22 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{Sensitivity of the green-patent estimate to the depreciation rate of the patent stock}
+\label{tab:depreciation}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccccc}
+\toprule
+ & \multicolumn{3}{c}{Stock in levels} & \multicolumn{2}{c}{log(1 + stock)} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-6}
+Depreciation rate & $\hat\beta$ (SE) & $p$ & Pre-period mean (Alberta) & $\hat\beta$ (SE) & $p$ \\
+\midrule
+$\delta=0.10$ & 23.41 (19.98) & 0.24 & 85.1 & $-$0.134 (0.194) & 0.49 \\
+$\delta=0.15$ & 15.68 (13.69) & 0.25 & 72.8 & $-$0.139 (0.186) & 0.45 \\
+$\delta=0.20$ & 10.59 (11.05) & 0.34 & 63.3 & $-$0.143 (0.180) & 0.42 \\
+\addlinespace
+Published series ($\delta=0.15$, allocated across provinces) & 19.91 (15.55) & 0.20 & 65.8 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
+Notes: Patent stocks re-constructed from annual green patent flows (fractional counts) by the perpetual-inventory method at the firm level, $S_t=(1-\delta)S_{t-1}+F_t$, for three depreciation rates; the published series allocates the firm stock across provinces by facility NAICS weights, which explains the small difference at $\delta=0.15$. Firm and year fixed effects; standard errors clustered by firm; $N=935$, 66 firms.
+\end{minipage}
+\end{table}

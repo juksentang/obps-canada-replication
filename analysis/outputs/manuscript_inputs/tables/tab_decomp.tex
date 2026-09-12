@@ -1,0 +1,19 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{Accounting decomposition $\ln E=\ln I+\ln Y$: firm emissions, sector emission intensity and implied real output}
+\label{tab:decomp}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccccccc}
+\toprule
+ & Baseline & + Alberta $\times$ & + NAICS $\times$ & + both & Pre-COVID & \multicolumn{2}{c}{Pre-trend joint $p$} \\
+ & & ln WTI & year FE & & ($\leq$2019) & 2013--17 & 2016--17 \\
+\midrule
+Log total emissions & 0.053 (0.163) & $-$0.044 (0.154) & $-$0.131 (0.241) & $-$0.292 (0.264) & $-$0.075 (0.128) & 0.622 & 0.621 \\
+Log sector emission intensity & $-$0.346$^{*}$ (0.197) & $-$0.149 (0.183) & $-$0.403$^{**}$ (0.195) & $-$0.140 (0.245) & $-$0.437$^{**}$ (0.199) & 0.243 & 0.065 \\
+Log implied real output & 0.400$^{**}$ (0.160) & 0.105 (0.117) & 0.273 (0.175) & $-$0.152 (0.180) & 0.363$^{**}$ (0.147) & 0.003 & 0.013 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
+Notes: $E$ is firm emissions (GHGRP); $I$ is the emission intensity of the firm's NAICS 3-digit sector in its province (GHGRP sector emissions divided by real sector GDP, Statistics Canada, 2015 dollars); $Y=E/I$ is the firm's implied real output. Because $Y$ is imputed from $E$ and $I$, the three coefficients sum exactly within each column. Alberta $\times$ post-2019 coefficients, firm and year fixed effects, firm-clustered standard errors in parentheses; $N=934$ (one observation lacks a sector deflator). The last two columns report cluster-robust $F$-tests that the event-study lead coefficients are jointly zero. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
+\end{minipage}
+\end{table}

@@ -1,0 +1,26 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{Genuine within-firm comparison: Alberta versus non-Alberta operations of the same firm, company--province--year panel of facility emissions}
+\label{tab:withinfirm}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccccc}
+\toprule
+Specification & $\hat\beta$ (SE) & $p$ & $N$ & Firms & Firm--province cells \\
+\midrule
+\multicolumn{6}{l}{\textit{A. All firms with facilities both inside and outside Alberta}} \\
+\quad Firm FE + year FE & 0.517$^{**}$ (0.215) & 0.016 & 2406 & 137 & 358 \\
+\quad Firm-province FE + year FE & $-$0.106 (0.261) & 0.684 & 2406 & 137 & 358 \\
+\quad Firm $\times$ year FE + firm-province FE (true within-firm-year) & 0.039 (0.186) & 0.833 & 1958 & 132 & 345 \\
+\quad Event study (firm $\times$ year FE): joint test of leads 2013-2017 & $F=1.51$ & $p=0.19$ & 1958 & 132 & -- \\
+\addlinespace
+\multicolumn{6}{l}{\textit{B. Large incumbents ($\geq$50 kt in 2018, observed by 2016)}} \\
+\quad Firm FE + year FE & 0.807$^{**}$ (0.329) & 0.014 & 1446 & 49 & 136 \\
+\quad Firm-province FE + year FE & $-$0.003 (0.121) & 0.981 & 1446 & 49 & 136 \\
+\quad Firm $\times$ year FE + firm-province FE (true within-firm-year) & $-$0.066 (0.220) & 0.762 & 1183 & 48 & 134 \\
+\quad Event study (firm $\times$ year FE): joint test of leads 2013-2017 & $F=1.13$ & $p=0.36$ & 1183 & 48 & -- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{\textwidth}\footnotesize
+Notes: Outcome is log emissions of a firm's facilities aggregated within each province and year. The third specification in each panel includes firm $\times$ year and firm--province fixed effects, so the Alberta $\times$ post-2019 coefficient is identified only from firm--years in which the same firm reports both Alberta and non-Alberta facilities. Standard errors clustered by firm. The event-study row reports the joint test of the 2013--2017 leads in the firm $\times$ year specification.
+\end{minipage}
+\end{table}

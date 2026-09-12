@@ -1,0 +1,26 @@
+
+\begin{table}[htbp]
+\centering
+\caption{Post-hoc Power Analysis (N=66 Robust Sample)}
+\label{tab:power_analysis}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{Observed Results} & \multicolumn{2}{c}{Minimum Detectable Effect} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-6}
+Outcome & $\hat{\beta}$ & SE & Ex-post Power & 80\% Power & 90\% Power \\
+\midrule
+ln(E) Emissions & 0.054 & 0.163 & 5.2% & 0.457 & 0.528 \\
+ln(I) Intensity & -0.346 & 0.197 & 41.9% & 0.552 & 0.639 \\
+ln(Y) Output & 0.400 & 0.160 & 70.5% & 0.448 & 0.519 \\
+Green Patents & 19.906 & 15.545 & 24.8% & 43.552 & 50.391 \\
+
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item \textit{Notes:} MDE = Minimum Detectable Effect at specified power level with $\alpha = 0.05$ (two-tailed).
+Ex-post power calculated using observed coefficient and standard error.
+With only 45 treated firms and 41 control firms,
+the effective sample size for DiD estimation is approximately 86.
+\end{tablenotes}
+\end{table}

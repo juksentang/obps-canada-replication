@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this replication package, please cite the paper and this repository."
+title: "Replication package: Does Output Protection Blunt Carbon Pricing? Evidence from Large Industrial Emitters under Canada's National Price Floor"
+type: software
+authors:
+  - family-names: Tang
+    given-names: Juk-Sen
+    orcid: "https://orcid.org/0009-0009-8849-874X"
+    affiliation: "McGill University; Beijing Academy of Agriculture and Forestry Sciences"
+  - family-names: Gong
+    given-names: Jing
+    orcid: "https://orcid.org/0009-0001-5570-0819"
+    affiliation: "Beijing Academy of Agriculture and Forestry Sciences"
+  - family-names: Fu
+    given-names: Yi
+    orcid: "https://orcid.org/0009-0006-9560-4668"
+    affiliation: "McGill University"
+  - family-names: Chen
+    given-names: Junhong
+    orcid: "https://orcid.org/0009-0007-7201-3408"
+    affiliation: "Beijing Academy of Agriculture and Forestry Sciences"
+repository-code: "https://github.com/juksentang/obps-canada-replication"
+license: MIT
+version: "1.0-submission"
+date-released: "2026-09-12"
+keywords:
+  - carbon pricing
+  - output-based pricing
+  - difference-in-differences
+  - industrial emissions
+  - green innovation
+  - Canada

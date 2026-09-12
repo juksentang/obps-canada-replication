@@ -1,0 +1,7 @@
+{
+  "nAlbertaShareNationalGhg": {
+    "value": 38,
+    "fmt": "{:.0f}",
+    "source": "ECCC2024NIR (National Inventory Report 1990-2022), Alberta share of Canada's total GHG emissions in 2022, percent; published statistic, not estimated in this project"
+  }
+}

@@ -1,0 +1,35 @@
+﻿"Multifactor productivity and related variables in the aggregate business sector and major sub-sectors, by industry 1"
+"Frequency: Annual"
+"Table: 36-10-0211-01 (formerly CANSIM 383-0026)"
+"Release date: 2025-04-14"
+"Geography: Province or territory"
+""
+""
+
+"North American Industry Classification System (NAICS)","Finance, insurance, real estate, rental and leasing and management of companies and enterprises 2",,,,,,,,,,,,,,,,,,,,,
+"Labour productivity measures and related measures","Multifactor productivity 3",,,,,,,,,,,,,,,,,,,,,
+"Geography","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"
+,"Index, 2017=100",,,,,,,,,,,,,,,,,,,,,
+"Newfoundland and Labrador","88.976","91.463","89.212","89.536","88.449","83.201","83.423","86.331","83.543","82.613","85.284","87.709","90.517","94.281","94.283","100.000","98.775","93.786","100.774","105.227","106.638","104.228"
+"Prince Edward Island","98.039","99.113","99.292","104.335","101.881","97.249","95.283","97.253","93.109","96.125","94.348","96.118","94.799","96.724","97.249","100.000","98.921","97.330","99.563","98.321","94.160","96.860"
+"Nova Scotia","97.691","96.075","95.147","91.332","95.400","94.836","91.416","91.948","90.192","93.265","94.390","92.948","91.109","93.605","95.596","100.000","101.845","100.142","102.038","104.754","104.385","102.665"
+"New Brunswick","97.107","97.928","96.946","98.082","96.953","92.678","88.117","89.167","90.000","91.500","93.697","91.363","92.331","94.027","94.473","100.000","101.470","101.401","98.658","97.140","96.999","97.212"
+"Quebec","88.704","88.160","87.259","83.817","83.983","85.515","83.218","85.784","87.141","87.305","89.553","92.515","93.289","95.697","96.024","100.000","102.591","102.493","106.637","109.545","110.610","111.393"
+"Ontario","91.118","89.715","89.346","88.408","86.740","87.246","84.293","86.487","86.823","88.522","88.176","90.249","90.333","93.434","93.925","100.000","100.880","99.877","104.185","103.843","99.559","96.842"
+"Manitoba","90.984","90.505","89.691","87.229","88.764","89.025","86.154","87.588","89.260","92.330","92.744","94.263","95.665","94.367","96.598","100.000","101.536","99.863","103.890","104.157","105.640","103.698"
+"Saskatchewan","85.984","88.488","89.048","89.422","89.354","90.544","89.461","92.307","93.781","99.131","99.770","99.653","98.440","97.725","95.110","100.000","101.880","99.757","101.446","106.119","107.523","108.753"
+"Alberta","94.222","93.188","90.901","90.291","89.104","88.902","90.192","90.071","90.839","96.400","96.531","98.608","100.195","101.042","97.281","100.000","99.286","99.400","99.085","101.136","103.952","107.936"
+"British Columbia","91.963","90.364","90.554","89.784","92.018","93.626","90.780","90.817","90.981","91.984","90.242","91.892","94.667","95.832","96.989","100.000","100.535","99.277","104.933","106.557","102.844","103.929"
+
+
+
+
+Footnotes:
+1,"The business sector covers the whole economy less public administration, non-profit institutions and the rental value of owner-occupied dwellings."
+2,"This combines parts of the North American Industry Classification System (NAICS) codes 52, 53, 55. This aggregate excludes the imputed rent of owner occupied dwellings."
+3,"Multifactor productivity measures the efficiency with which all inputs are used in production. It is the ratio of real gross domestic product (GDP) to combined labour and capital inputs."
+
+
+
+"How to cite: Statistics Canada. Table 36-10-0211-01  Multifactor productivity and related variables in the aggregate business sector and major sub-sectors, by industry"
+https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3610021101

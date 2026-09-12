@@ -1,0 +1,54 @@
+﻿"Multifactor productivity, value-added, capital input and labour input in the aggregate business sector and major sub-sectors, by industry 1"
+"Frequency: Annual"
+"Table: 36-10-0208-01 (formerly CANSIM 383-0021)"
+"Release date: 2025-04-07"
+"Geography: Canada"
+""
+""
+
+"Multifactor productivity and related variables","Multifactor productivity 2",,,,
+"Geography","Canada",,,,
+"North American Industry Classification System (NAICS)","2019","2020","2021","2022","2023"
+,"Index, 2017=100",,,,
+"Business sector 1","99.516","100.495","99.554","100.155","98.416"
+"Agriculture, forestry, fishing and hunting","97.972","100.731","90.286","99.115","92.151"
+"Mining and oil and gas extraction","103.513","101.796","106.265","107.502","108.275"
+"Utilities","102.447","102.614","100.383","102.905","95.841"
+"Construction","98.920","109.387","100.483","96.958","90.007"
+"Manufacturing","98.895","97.499","98.326","99.535","98.636"
+"Wholesale trade","98.719","104.527","103.432","101.572","97.813"
+"Retail trade","101.395","108.804","109.927","109.816","111.900"
+"Transportation and warehousing","92.693","72.802","72.788","80.482","82.130"
+"Information and cultural industries","100.676","99.978","97.386","100.426","101.830"
+"Finance, insurance, real estate and renting and leasing 3","100.802","104.619","106.298","104.524","104.314"
+"Professional, scientific and technical services","100.591","103.799","99.188","101.640","100.052"
+"Other services (except public administration) (Terminated)","..t","..t","..t","..t","..t"
+"Administrative and support, waste management and remediation services","101.419","96.226","98.036","97.057","95.717"
+"Arts, entertainment and recreation","99.147","81.485","92.628","103.873","106.759"
+"Accommodation and food services","102.632","104.023","108.930","109.701","106.920"
+"Other private services 4","99.263","102.750","98.628","98.011","95.266"
+"Business sector, goods, special aggregation 5","100.166","101.747","99.422","100.403","97.253"
+"Business sector, services, special aggregation 6","99.216","99.607","99.410","99.985","99.160"
+"Non-durable manufacturing, special aggregation 7","95.990","96.926","96.994","97.058","93.903"
+"Durable manufacturing, special aggregation 8","101.312","97.604","99.090","101.259","102.241"
+
+Symbol legend:
+.., not available for a specific reference period
+
+
+
+
+Footnotes:
+1,"The business sector covers the whole economy less public administration, non-profit institutions and the rental value of owner-occupied dwellings."
+2,"Multifactor productivity measures the efficiency with which all inputs are used in production. It is the ratio of real gross domestic product (GDP) to combined labour and capital inputs."
+3,"This combines the North American Industry Classification System (NAICS) codes 52-53 with the exception of owner-occupied dwellings industry."
+4,"This combines parts of the North American Industry Classification System (NAICS) codes 61, 62, 81."
+5,"This combines the North American Industry Classification System (NAICS) codes 11, 21, 22, 23, 31-33."
+6,"This combines the North American Industry Classification System (NAICS) codes 41, 44-45, 48-49, 51, 52, 53, 54, 55, 56, 61, 62, 71, 72, 81 with the exception of owner-occupied dwellings industry."
+7,"This combines the North American Industry Classification System (NAICS) codes 311-316, 322-326."
+8,"This combines the North American Industry Classification System (NAICS) codes 321, 327, 331-337, 339."
+
+
+
+"How to cite: Statistics Canada. Table 36-10-0208-01  Multifactor productivity, value-added, capital input and labour input in the aggregate business sector and major sub-sectors, by industry"
+https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3610020801

@@ -1,0 +1,29 @@
+
+\begin{table}[ht]
+\centering
+\caption{Wild Cluster Bootstrap Inference: OLS vs WLS (Emission-Weighted)}
+\label{tab:wild_bootstrap}
+\footnotesize
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Sample} & \textbf{Outcome} & \textbf{Method} & \textbf{Coef.} & \textbf{p (Cluster)} & \textbf{p (Bootstrap)} \\
+\midrule
+66 firms & Green Patent Stock & OLS & 19.91 & 0.2004 & 0.4957 \\
+66 firms & Green Patent Stock & WLS & -1.28 & 0.9553 & 0.9595 \\
+66 firms & Emission Intensity & OLS & -181.36 & 0.1330 & 0.5093 \\
+66 firms & Emission Intensity & WLS & -313.97 & 0.2057 & 0.5133 \\
+66 firms & Log Emissions & OLS & 0.05 & 0.7424 & 0.7544 \\
+66 firms & Log Emissions & WLS & -0.20 & 0.5871 & 0.6883 \\
+\midrule
+101 firms & Green Patent Stock & OLS & 10.72 & 0.3872 & 0.5408 \\
+101 firms & Green Patent Stock & WLS & -1.98 & 0.9275 & 0.9310 \\
+101 firms & Emission Intensity & OLS & -121.52 & 0.2002 & 0.4962 \\
+101 firms & Emission Intensity & WLS & -295.39 & 0.2128 & 0.5103 \\
+101 firms & Log Emissions & OLS & 0.06 & 0.6536 & 0.6958 \\
+101 firms & Log Emissions & WLS & -0.18 & 0.6180 & 0.7019 \bottomrule
+\end{tabular}
+\vspace{0.3em}
+\\
+\footnotesize
+\textit{Notes:} Wild cluster bootstrap uses Rademacher weights with 1,999 replications, clustered at the firm level. WLS weights observations by 2018 baseline emissions to reduce noise from smaller firms. The 66-firm sample excludes companies that entered after the 2016 GHGRP threshold change. The 101-firm sample includes all multi-province firms with baseline emissions $\geq$ 50 kt. All models include firm and year fixed effects. *** p$<$0.01, ** p$<$0.05, * p$<$0.10.
+\end{table}
